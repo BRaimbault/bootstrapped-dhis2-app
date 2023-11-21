@@ -11,10 +11,14 @@
         "deploy": "d2-app-scripts deploy"
     },
     "devDependencies": {
-        "@dhis2/cli-app-scripts": "^6.1.2"
+        "@dhis2/cli-app-scripts": "^10.3.10"
     },
     "dependencies": {
-        "@dhis2/app-runtime": "^2.8.0"
+        "@dhis2/app-runtime": "^3.9.4",
+        "@dhis2/ui": "8.14.10"
+    },
+    "resolutions": {
+        "@dhis2/ui": "8.14.10"
     },
     "main": "./build/cjs/index",
     "module": "./build/es/index",
