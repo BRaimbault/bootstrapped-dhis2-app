@@ -2,10 +2,21 @@ import React from 'react'
 import { DataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import classes from './App.module.css'
+import LeafletMap from './LeafletMap';
 
 const query = {
-    me: {
-        resource: 'me',
+    geojson: {
+        resource: "organisationUnits.geojson",
+        params: {
+            level: 2,
+        },
+    },
+    values: {
+        resource: "analytics",
+        params: {
+            dimension: ["dx:nkjlWUMIdHh", "ou:LEVEL-2"],
+            filter: "pe:LAST_12_MONTHS",
+        },
     },
 }
 
@@ -17,10 +28,8 @@ const MyApp = () => (
                 if (loading) return <span>...</span>
                 return (
                     <>
-                        <h1>
-                            {i18n.t('Hello {{name}}', { name: data.me.name })}
-                        </h1>
-                        <h3>{i18n.t('Welcome to DHIS2!')}</h3>
+                        <h3>{i18n.t('Bed net usage by district over the last 12 months')}</h3>
+                        <LeafletMap data={data} />
                     </>
                 )
             }}
